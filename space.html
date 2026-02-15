@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>店舗詳細（UI試作）</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif; margin: 0; background:#f6f7f9; color:#111;}
+    header { padding:16px; background:#fff; border-bottom:1px solid #e6e6e6; position:sticky; top:0;}
+    .wrap { max-width: 980px; margin: 0 auto; padding: 16px; }
+    .box { background:#fff; border:1px solid #e6e6e6; border-radius:14px; padding:14px; }
+    h1 { font-size:18px; margin:0 0 6px 0;}
+    .sub { color:#555; font-size:12px; }
+    .tagrow { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+    .tag { font-size:12px; padding:6px 10px; border-radius:999px; background:#f2f2f2; border:1px solid #e6e6e6; }
+    .grid { display:grid; gap:12px; }
+    .row { display:flex; gap:10px; margin-top:12px;}
+    a.btn { flex:1; text-align:center; padding:12px; border-radius:10px; font-weight:800; text-decoration:none; }
+    .btnLine { border:1px solid #ddd; color:#111; background:#fff; }
+    .btnBlue { border:1px solid #2f6feb; color:#fff; background:#2f6feb; }
+    ul { margin: 8px 0 0 18px; color:#333; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>店舗詳細（UI試作）</h1>
+      <div class="sub">ここは「貸せる条件」を見える化するページです（まだダミー）</div>
+    </div>
+  </header>
+
+  <main class="wrap grid">
+    <section class="box">
+      <div style="font-weight:900; font-size:18px;">居酒屋 たぬき（昼の部）</div>
+      <div class="sub" style="margin-top:6px;">エリア：渋谷 ／ 最低3時間〜 ／ ¥3,500 / 時間</div>
+
+      <div class="tagrow">
+        <span class="tag">客席OK</span>
+        <span class="tag">テイクアウトOK</span>
+        <span class="tag">揚げ物NG</span>
+      </div>
+
+      <div class="row">
+        <a class="btn btnLine" href="./">一覧に戻る</a>
+        <a class="btn btnBlue" href="./request.html">予約リクエストへ</a>
+      </div>
+    </section>
+
+    <section class="box">
+      <div style="font-weight:800;">貸し出し範囲（例）</div>
+      <ul>
+        <li>客席：OK（20席）</li>
+        <li>厨房：OK</li>
+        <li>冷蔵庫：棚1段まで</li>
+        <li>ゴミ：持ち帰り</li>
+      </ul>
+    </section>
+
+    <section class="box">
+      <div style="font-weight:800;">設備（例）</div>
+      <ul>
+        <li>無料で使える：コンロ / シンク / まな板（共用）</li>
+        <li>有料：エスプレッソマシン（＋500円/時間）</li>
+        <li>禁止：店の調味料、酒の在庫</li>
+      </ul>
+    </section>
+
+    <section class="box">
+      <div style="font-weight:800;">匂い・メニュー条件（例）</div>
+      <ul>
+        <li>揚げ物：NG</li>
+        <li>にんにく強め：NG</li>
+        <li>魚介を焼く：要相談</li>
+      </ul>
+      <div class="sub" style="margin-top:8px;">
+        ※ここは後で「借り手のメニュー申告」とセットで、承認判断しやすくします。
+      </div>
+    </section>
+
+    <footer class="box sub">
+      デポジット：初回50,000円（問題なければ返金）／予約方式：リクエスト予約（承認制）
+    </footer>
+  </main>
+</body>
+</html>
