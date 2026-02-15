@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>予約リクエスト（UI試作）</title>
+  <title>食楽酒楽みずぐち｜予約リクエスト</title>
   <style>
     body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif; margin:0; background:#f6f7f9; color:#111;}
     header { padding:16px; background:#fff; border-bottom:1px solid #e6e6e6; position:sticky; top:0;}
@@ -11,7 +11,7 @@
     .box { background:#fff; border:1px solid #e6e6e6; border-radius:14px; padding:14px; }
     h1 { font-size:18px; margin:0 0 6px 0;}
     .sub { color:#555; font-size:12px; }
-    label { display:block; margin-top:10px; font-weight:800; font-size:13px;}
+    label { display:block; margin-top:10px; font-weight:1000; font-size:13px;}
     input, select, textarea {
       width:100%; padding:10px; border:1px solid #ddd; border-radius:10px; font-size:14px; margin-top:6px;
       box-sizing: border-box;
@@ -19,11 +19,10 @@
     textarea { min-height: 90px; }
     .grid { display:grid; gap:12px; }
     .row { display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;}
-    a.btn { text-align:center; padding:12px; border-radius:10px; font-weight:800; text-decoration:none; }
+    a.btn { text-align:center; padding:12px; border-radius:10px; font-weight:1000; text-decoration:none; }
     .btnLine { border:1px solid #ddd; color:#111; background:#fff; }
-    .btnBlue { border:1px solid #2f6feb; color:#fff; background:#2f6feb; }
     .pill { display:inline-block; font-size:12px; padding:6px 10px; border-radius:999px; background:#f2f2f2; border:1px solid #e6e6e6; margin-right:6px; }
-    .calc { font-weight:900; font-size:16px; }
+    .calc { font-weight:1000; font-size:16px; }
     .notice { background:#fff7e6; border:1px solid #ffe1a3; }
     .ok { background:#eaf7ee; border:1px solid #b9e6c6; }
     button {
@@ -31,32 +30,35 @@
       padding: 12px;
       border: none;
       border-radius: 10px;
-      font-weight: 900;
+      font-weight: 1000;
       background: #111;
       color: #fff;
       font-size: 15px;
       margin-top: 12px;
     }
+    .two { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    @media (max-width: 720px){ .two{ grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
   <header>
     <div class="wrap">
-      <h1>予約リクエスト（UI試作）</h1>
-      <div class="sub">予約は承認制です。送信しても、まだ確定ではありません。</div>
+      <h1>予約リクエスト</h1>
+      <div class="sub">送信しても予約は確定しません（承認制）。後ほど店舗側が可否を連絡します。</div>
     </div>
   </header>
 
   <main class="wrap grid">
     <section class="box">
-      <div style="font-weight:900; font-size:16px;">居酒屋 たぬき（昼の部）</div>
+      <div style="font-weight:1000; font-size:16px;">食楽酒楽みずぐち</div>
       <div class="sub" style="margin-top:6px;">
-        エリア：渋谷 ／ ¥3,500 / 時間 ／ 最低3時間〜
+        料金：3時間¥3,000（最低）／ 追加：+¥1,000/時間
       </div>
       <div style="margin-top:10px;">
         <span class="pill">客席OK</span>
         <span class="pill">テイクアウトOK</span>
-        <span class="pill">揚げ物NG</span>
+        <span class="pill">厨房OK</span>
+        <span class="pill">食器NG</span>
       </div>
 
       <div class="row">
@@ -66,16 +68,26 @@
     </section>
 
     <section class="box">
-      <div style="font-weight:900;">① 利用時間（最低3時間＋1時間ずつ延長）</div>
+      <div style="font-weight:1000;">① 日時</div>
+      <div class="two">
+        <div>
+          <label>利用日</label>
+          <input id="date" type="date" />
+        </div>
+        <div>
+          <label>開始時刻（例）</label>
+          <select id="start">
+            <option>01:00</option><option>02:00</option><option>03:00</option><option>04:00</option>
+            <option>05:00</option><option>06:00</option><option>07:00</option><option>08:00</option>
+            <option>09:00</option><option>10:00</option><option>11:00</option><option>12:00</option>
+            <option selected>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option>
+            <option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option>
+            <option>21:00</option><option>22:00</option><option>23:00</option><option>24:00</option>
+          </select>
+        </div>
+      </div>
 
-      <label>開始時刻（例）</label>
-      <select id="start">
-        <option>10:00</option><option>11:00</option><option>12:00</option>
-        <option>13:00</option><option selected>14:00</option><option>15:00</option>
-        <option>16:00</option><option>17:00</option>
-      </select>
-
-      <label>利用時間</label>
+      <label>利用時間（最低3時間＋1時間ずつ延長）</label>
       <select id="hours">
         <option value="3" selected>3時間（最低）</option>
         <option value="4">4時間</option>
@@ -83,6 +95,8 @@
         <option value="6">6時間</option>
         <option value="7">7時間</option>
         <option value="8">8時間</option>
+        <option value="9">9時間</option>
+        <option value="10">10時間</option>
       </select>
 
       <div class="sub" style="margin-top:10px;">
@@ -90,17 +104,17 @@
       </div>
 
       <div class="box notice" style="margin-top:12px;">
-        <div class="calc">目安料金：<span id="fee">¥10,500</span></div>
+        <div class="calc">目安料金：<span id="fee">¥3,000</span></div>
         <div class="sub" style="margin-top:6px;">
-          計算：¥3,500 × <span id="h">3</span>時間（※ダミー計算）
+          計算：3時間=¥3,000 ／ 追加は +¥1,000 × <span id="addh">0</span>時間
         </div>
       </div>
     </section>
 
     <section class="box">
-      <div style="font-weight:900;">② メニュー申告（匂い・油・煙の確認）</div>
+      <div style="font-weight:1000;">② メニュー申告（重要：匂い・にんにく等）</div>
 
-      <label>営業形態</label>
+      <label>利用形態</label>
       <select id="mode">
         <option selected>客席営業</option>
         <option>テイクアウト</option>
@@ -110,71 +124,91 @@
       <select id="cookType">
         <option selected>焼く（フライパン/グリルなど）</option>
         <option>煮る</option>
-        <option>揚げる（※注意）</option>
+        <option>揚げる（OK）</option>
         <option>生もの中心</option>
+      </select>
+
+      <label>にんにく強め</label>
+      <select id="garlic">
+        <option selected>いいえ（NGに触れません）</option>
+        <option>はい（※この店舗はNG）</option>
       </select>
 
       <label>匂いの強さ（自己申告）</label>
       <select id="smell">
         <option selected>弱い（カフェ系など）</option>
         <option>普通</option>
-        <option>強い（にんにく/魚介/スパイス等）</option>
+        <option>強い（※基本NG：要相談）</option>
       </select>
 
       <label>具体的なメニュー（簡単でOK）</label>
-      <textarea id="menu" placeholder="例：ホットサンド、コーヒー、プリン など"></textarea>
+      <textarea id="menu" placeholder="例：焼きおにぎり、だし巻き、カレー、ホットサンド等"></textarea>
+
+      <div class="sub" style="margin-top:10px;">
+        ※匂い強めは基本NGです。内容により相談となります。
+      </div>
     </section>
 
     <section class="box">
-      <div style="font-weight:900;">③ デポジット（保証金）</div>
+      <div style="font-weight:1000;">③ ルール確認（ざっくり）</div>
+      <div class="sub" style="margin-top:6px;">
+        ・食器：NG（持ち込み推奨）／・調味料：原則持ち込み／・ゴミ：持ち帰り
+      </div>
+    </section>
+
+    <section class="box">
+      <div style="font-weight:1000;">④ デポジット（保証金）</div>
       <div class="box notice" style="margin-top:10px;">
         <div class="calc">初回デポジット：¥50,000</div>
         <div class="sub" style="margin-top:6px;">
-          ※問題がなければ利用後に返金されます（UI試作なので実際の決済はまだです）
+          ※問題がなければ利用後に返金されます（現時点はUI試作のため決済なし）
         </div>
       </div>
     </section>
 
     <section class="box">
-      <div style="font-weight:900;">④ 連絡先（ダミー）</div>
+      <div style="font-weight:1000;">⑤ 連絡先</div>
+
       <label>お名前</label>
       <input id="name" placeholder="例：山田 太郎" />
 
       <label>電話番号</label>
       <input id="tel" placeholder="例：090-xxxx-xxxx" />
 
+      <label>メール（連絡用）</label>
+      <input id="email" placeholder="例：example@gmail.com" />
+
       <label>ひとこと（任意）</label>
       <textarea id="msg" placeholder="例：初回なので丁寧に使います。よろしくお願いします。"></textarea>
 
-      <button id="send">予約リクエストを送る（ダミー）</button>
+      <button id="send">予約リクエストを送る（いまはダミー）</button>
 
       <div id="result" class="box ok" style="display:none; margin-top:12px;">
-        <div style="font-weight:900;">送信しました（ダミー）</div>
+        <div style="font-weight:1000;">送信しました（ダミー）</div>
         <div class="sub" style="margin-top:6px;">
-          ここから先は「貸し手が承認すると予約確定」という流れになります。
-        </div>
-        <div class="sub" style="margin-top:6px;">
-          次に作るページ：<b>貸し手承認画面（host.html）</b>
+          次のステップ：Googleフォーム連携をすると、ここで送った内容があなたのメールに届くようになります。
         </div>
       </div>
 
       <div class="sub" style="margin-top:10px;">
-        ※このページはUIの確認用です。実際の送信や決済はまだ行いません。
+        ※次の作業で、このボタンを「Googleフォーム送信」に切り替えます。
       </div>
     </section>
   </main>
 
   <script>
-    const PRICE = 3500;
+    const BASE_3H = 3000;
+    const ADD_PER_H = 1000;
 
     const hours = document.getElementById("hours");
     const fee = document.getElementById("fee");
-    const h = document.getElementById("h");
+    const addh = document.getElementById("addh");
 
     function updateFee() {
       const n = Number(hours.value || 3);
-      h.textContent = String(n);
-      fee.textContent = "¥" + (PRICE * n).toLocaleString();
+      const extra = Math.max(0, n - 3);
+      addh.textContent = String(extra);
+      fee.textContent = "¥" + (BASE_3H + ADD_PER_H * extra).toLocaleString();
     }
     hours.addEventListener("change", updateFee);
     updateFee();
