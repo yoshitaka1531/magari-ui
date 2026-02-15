@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>店舗詳細（UI試作）</title>
+  <title>食楽酒楽みずぐち｜貸店舗 詳細</title>
   <style>
     body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif; margin: 0; background:#f6f7f9; color:#111;}
     header { padding:16px; background:#fff; border-bottom:1px solid #e6e6e6; position:sticky; top:0;}
@@ -11,33 +11,48 @@
     .box { background:#fff; border:1px solid #e6e6e6; border-radius:14px; padding:14px; }
     h1 { font-size:18px; margin:0 0 6px 0;}
     .sub { color:#555; font-size:12px; }
-    .tagrow { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
-    .tag { font-size:12px; padding:6px 10px; border-radius:999px; background:#f2f2f2; border:1px solid #e6e6e6; }
     .grid { display:grid; gap:12px; }
-    .row { display:flex; gap:10px; margin-top:12px;}
-    a.btn { flex:1; text-align:center; padding:12px; border-radius:10px; font-weight:800; text-decoration:none; }
+    .row { display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;}
+    a.btn { flex:1; text-align:center; padding:12px; border-radius:10px; font-weight:900; text-decoration:none; }
     .btnLine { border:1px solid #ddd; color:#111; background:#fff; }
     .btnBlue { border:1px solid #2f6feb; color:#fff; background:#2f6feb; }
+    .tagrow { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+    .tag { font-size:12px; padding:6px 10px; border-radius:999px; background:#f2f2f2; border:1px solid #e6e6e6; }
     ul { margin: 8px 0 0 18px; color:#333; }
+    .priceBox { background:#0b1220; color:#fff; border-radius:14px; padding:14px; }
+    .priceBig { font-weight:1000; font-size:20px; }
+    .kv { display:grid; grid-template-columns: 1fr; gap:10px; }
+    .photo {
+      border:1px dashed #cfcfcf; border-radius:14px; padding:14px; background:#fafafa;
+      display:flex; align-items:center; justify-content:center; min-height:140px; text-align:center;
+    }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
   </style>
 </head>
 <body>
   <header>
     <div class="wrap">
-      <h1>店舗詳細（UI試作）</h1>
-      <div class="sub">ここは「貸せる条件」を見える化するページです（まだダミー）</div>
+      <h1>貸店舗 詳細</h1>
+      <div class="sub">実店舗：食楽酒楽みずぐち（大阪天満宮）｜予約はリクエスト（承認制）</div>
     </div>
   </header>
 
   <main class="wrap grid">
     <section class="box">
-      <div style="font-weight:900; font-size:18px;">居酒屋 たぬき（昼の部）</div>
-      <div class="sub" style="margin-top:6px;">エリア：渋谷 ／ 最低3時間〜 ／ ¥3,500 / 時間</div>
+      <div style="font-weight:1000; font-size:20px;">食楽酒楽みずぐち</div>
+      <div class="sub" style="margin-top:6px;">
+        最寄り：大阪天満宮駅｜
+        <a href="https://yahoo.jp/Co-hhx" target="_blank" rel="noopener">地図（Yahoo）</a>
+        [Source](https://yahoo.jp/Co-hhx)
+      </div>
 
       <div class="tagrow">
         <span class="tag">客席OK</span>
         <span class="tag">テイクアウトOK</span>
-        <span class="tag">揚げ物NG</span>
+        <span class="tag">厨房OK</span>
+        <span class="tag">食器NG</span>
+        <span class="tag">にんにく強めNG</span>
+        <span class="tag">匂い強め：基本NG（要相談）</span>
       </div>
 
       <div class="row">
@@ -46,34 +61,76 @@
       </div>
     </section>
 
+    <section class="priceBox">
+      <div class="priceBig">料金</div>
+      <div style="margin-top:8px;">
+        <div class="priceBig">3時間：¥3,000（最低）</div>
+        <div style="margin-top:6px;">追加：1時間ごとに <b>+¥1,000</b></div>
+        <div class="sub" style="margin-top:10px; color:#cbd5e1;">
+          ※準備〜原状回復（撤収）まで、利用時間に含めます
+        </div>
+      </div>
+    </section>
+
     <section class="box">
-      <div style="font-weight:800;">貸し出し範囲（例）</div>
+      <div style="font-weight:1000;">席・利用形態</div>
       <ul>
-        <li>客席：OK（20席）</li>
-        <li>厨房：OK</li>
-        <li>冷蔵庫：棚1段まで</li>
-        <li>ゴミ：持ち帰り</li>
+        <li>カウンター：10席</li>
+        <li>テーブル：4名×2卓</li>
+        <li>利用形態：客席営業／テイクアウト（両方OK）</li>
       </ul>
     </section>
 
     <section class="box">
-      <div style="font-weight:800;">設備（例）</div>
+      <div style="font-weight:1000;">予約可能な時間帯（ルール）</div>
       <ul>
-        <li>無料で使える：コンロ / シンク / まな板（共用）</li>
-        <li>有料：エスプレッソマシン（＋500円/時間）</li>
-        <li>禁止：店の調味料、酒の在庫</li>
-      </ul>
-    </section>
-
-    <section class="box">
-      <div style="font-weight:800;">匂い・メニュー条件（例）</div>
-      <ul>
-        <li>揚げ物：NG</li>
-        <li>にんにく強め：NG</li>
-        <li>魚介を焼く：要相談</li>
+        <li>日曜・祝日：24時間OK</li>
+        <li>平日：01:00〜14:00 OK</li>
       </ul>
       <div class="sub" style="margin-top:8px;">
-        ※ここは後で「借り手のメニュー申告」とセットで、承認判断しやすくします。
+        ※実運用では「日時指定」で申請してもらい、貸し手が承認します。
+      </div>
+    </section>
+
+    <section class="box">
+      <div style="font-weight:1000;">貸せるもの／ルール（重要）</div>
+      <ul>
+        <li>厨房：<b>OK</b></li>
+        <li>食器：<b>NG</b>（持ち込み推奨）</li>
+        <li>調味料：原則持ち込み</li>
+        <li>ゴミ：持ち帰り</li>
+      </ul>
+      <div class="sub" style="margin-top:8px;">
+        ※「何が使えるか」を明確にして、トラブルを減らします。
+      </div>
+    </section>
+
+    <section class="box">
+      <div style="font-weight:1000;">匂い・メニュー条件</div>
+      <ul>
+        <li>揚げ物：OK</li>
+        <li>にんにく強め：NG</li>
+        <li>魚介を焼く：OK</li>
+        <li>匂い強め：基本NG（要相談）</li>
+      </ul>
+      <div class="sub" style="margin-top:8px;">
+        予約時に「メニュー申告」を入力してもらい、貸し手が承認判断します。
+      </div>
+    </section>
+
+    <section class="box">
+      <div style="font-weight:1000;">店舗写真（いったん枠だけ）</div>
+      <div class="photo">
+        <div>
+          <div style="font-weight:900;">写真は後で確実に表示できる形にします</div>
+          <div class="sub" style="margin-top:6px;">
+            いまの写真URLはブラウザ側制限で表示できない場合があります。<br/>
+            写真をGitHubにアップして貼ると確実です（後で手順を案内します）。
+          </div>
+          <div class="sub" style="margin-top:10px; word-break:break-all;">
+            元画像URL：<span class="mono">（あなたがくれたYahoo画像URL）</span>
+          </div>
+        </div>
       </div>
     </section>
 
